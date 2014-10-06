@@ -5,12 +5,9 @@ package goebel;
  * @version 2014-10-06
  */
 public class Control{
-	private UhrDisplay dieuhr;
-	private Work work = new Work(30);
-	
-	public Control(UhrDisplay dieuhr){
-		this.dieuhr = dieuhr;
-	}
+	private UhrDisplay dieuhr = new UhrDisplay(this);
+	private Work work = new Work();
+
 	
 	/**
 	 * @return die View von Uhr
@@ -18,19 +15,23 @@ public class Control{
 	public UhrDisplay getDieuhr() {
 		return dieuhr;
 	}
-	/**
-	 * @return das Model von Uhr
-	 */
-	public Work getWork() {
-		return work;
+	public UhrDisplay getDieUhr(){
+		return dieuhr;
 	}
 	public String[] getDate(){
 		return work.getDatum();
+	}
+	public int[] getZeit(){
+		return work.getZeit();
 	}
 	public int gradToX(int grad, int radius, int r){
 		return work.gradToX(grad, radius, r);
 	}
 	public int gradToY(int grad, int radius, int r){
 		return work.gradToY(grad, radius, r);
+	}
+	public void update(){
+	   dieuhr.repaint();
+	   dieuhr.validate();
 	}
 }
