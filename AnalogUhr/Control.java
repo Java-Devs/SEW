@@ -24,6 +24,9 @@ public class Control{
 	public Work getWork() {
 		return work;
 	}
+	public String[] getDate(){
+		return work.getDatum();
+	}
 	public int gradToX(int grad, int radius, int r){
 		return work.gradToX(grad, radius, r);
 	}
