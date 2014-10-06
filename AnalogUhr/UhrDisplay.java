@@ -15,6 +15,7 @@ public class UhrDisplay extends JPanel{
 	private int durchmesser;
 	private Control c;
 	private String[] date;
+	private int[] zeit;
 
 	public UhrDisplay(Control c){
 		this.c = c;
@@ -48,7 +49,8 @@ public class UhrDisplay extends JPanel{
 	    g.setFont(new Font("Arial",Font.PLAIN,mittelpunkt/10));
 	    g.drawString(date[3]+","+date[2]+"."+date[1], mittelpunkt+(int)(mittelpunkt/3.5), mittelpunkt+mittelpunkt/20);
 	
-	   
+	    zeit = c.getZeit();
+	    g.drawLine(mittelpunkt, mittelpunkt, c.gradToX(zeit[2]*360/60,durchmesser,durchmesser/2), c.gradToY(zeit[2]*360/60,durchmesser,durchmesser/3));
 	}
 	
 }
