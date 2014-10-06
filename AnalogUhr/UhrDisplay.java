@@ -13,11 +13,15 @@ import javax.swing.*;
 public class UhrDisplay extends JPanel{
 	private int mittelpunkt;
 	private int durchmesser;
-	private Control c = new Control(this);
+	private Control c;
 	private String[] date;
+
+	public UhrDisplay(Control c){
+		this.c = c;
+	}
 	
 	@Override
-	public void paint(Graphics g) {
+	public void paintComponent(Graphics g) {
 		g.setColor(Color.GRAY);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight()); // Hintergrund in grau
 		g.setColor(new Color(152,223,243));
@@ -38,9 +42,13 @@ public class UhrDisplay extends JPanel{
 			g.drawLine(c.gradToX(i*360/60,durchmesser,durchmesser/2),c.gradToY(i*360/60,durchmesser,durchmesser/2),c.gradToX(i*360/60,durchmesser,(int)(durchmesser/2.1)),c.gradToY(i*360/60,durchmesser,(int)(durchmesser/2.1)));
 		}
 	    date = c.getDate();
+	    
+	    //Datum und die Box fuer das Datum zeichnen
 	    g.drawRect(mittelpunkt+mittelpunkt/4, mittelpunkt-mittelpunkt/11, durchmesser/4, durchmesser/10);
 	    g.setFont(new Font("Arial",Font.PLAIN,mittelpunkt/10));
 	    g.drawString(date[3]+","+date[2]+"."+date[1], mittelpunkt+(int)(mittelpunkt/3.5), mittelpunkt+mittelpunkt/20);
+	
+	   
 	}
 	
 }
