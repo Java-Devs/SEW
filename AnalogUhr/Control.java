@@ -24,10 +24,10 @@ public class Control{
 	public int[] getZeit(){
 		return work.getZeit();
 	}
-	public int gradToX(int grad, int radius, int r){
+	public int gradToX(double grad, int radius, int r){
 		return work.gradToX(grad, radius, r);
 	}
-	public int gradToY(int grad, int radius, int r){
+	public int gradToY(double grad, int radius, int r){
 		return work.gradToY(grad, radius, r);
 	}
 	public void update(){
