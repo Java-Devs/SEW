@@ -11,12 +11,11 @@ import javax.swing.*;
 public class UhrStart{
 	public static void main (String[] args){
 		JFrame jf = new JFrame("AnalogUhr");
-		UhrDisplay dieuhr = new UhrDisplay();
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		jf.setBounds(350, 150, 400, 400); 
+		UhrDisplay ud = new UhrDisplay();
+		jf.setBounds(350, 150, 400, 500); 
 		jf.setVisible(true);
-		jf.add(dieuhr,BorderLayout.CENTER);
+		jf.add(ud,BorderLayout.CENTER);
 
 	}
 }
