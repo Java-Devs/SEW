@@ -31,9 +31,11 @@ public class Work{
 		return "Error";
 	}
 	public String[] getDatum(){
+		cal = Calendar.getInstance();
 		return new String[]{""+cal.get(Calendar.YEAR),""+cal.get(Calendar.MONTH),""+cal.get(Calendar.DAY_OF_MONTH),getWochentag()};
 	}
 	public int[] getZeit(){
+		cal = Calendar.getInstance();
 		return new int[]{cal.get(Calendar.HOUR),cal.get(Calendar.MINUTE),cal.get(Calendar.SECOND),cal.get(Calendar.MILLISECOND)};
 	}
 	/**
