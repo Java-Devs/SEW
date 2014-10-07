@@ -35,7 +35,6 @@ public class UhrDisplay extends JPanel{
 		}
 		g.fillOval(0, 0, durchmesser, durchmesser); // Die Uhr
 		g.setColor(Color.BLACK);
-		g.fillOval(durchmesser/2-durchmesser/80, durchmesser/2-durchmesser/80, durchmesser/40, durchmesser/40); // Den Mittelpunkt kennzeichnen
 		for (int i = 0; i < 12; i++) { // Die Striche fuer die Stunden
 			g.drawLine(c.gradToX(i*360/12,durchmesser,durchmesser/2),c.gradToY(i*360/12,durchmesser,durchmesser/2),c.gradToX(i*360/12,durchmesser,(int)(durchmesser/2.5)),c.gradToY(i*360/12,durchmesser,(int)(durchmesser/2.5)));
 		}
@@ -50,7 +49,11 @@ public class UhrDisplay extends JPanel{
 	    g.drawString(date[3]+","+date[2]+"."+date[1], mittelpunkt+(int)(mittelpunkt/3.5), mittelpunkt+mittelpunkt/20);
 	
 	    zeit = c.getZeit();
-	    g.drawLine(mittelpunkt, mittelpunkt, c.gradToX(zeit[2]*360/60,durchmesser,durchmesser/2), c.gradToY(zeit[2]*360/60,durchmesser,durchmesser/3));
+	    g.setColor(Color.RED);
+	    g.drawLine(mittelpunkt, mittelpunkt, c.gradToX(zeit[2]*360/60,durchmesser,durchmesser/2), c.gradToY(zeit[2]*360/60,durchmesser,durchmesser/2));
+	    g.setColor(Color.BLACK);
+		g.fillOval(durchmesser/2-durchmesser/80, durchmesser/2-durchmesser/80, durchmesser/40, durchmesser/40); // Den Mittelpunkt kennzeichnen
+	
 	}
 	
 }
