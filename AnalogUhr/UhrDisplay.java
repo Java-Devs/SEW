@@ -51,21 +51,27 @@ public class UhrDisplay extends JPanel{
 	    zeit = c.getZeit();
 	    g.setColor(Color.RED);
 	    // Sekundenzeiger
-	    g.drawLine(mittelpunkt, mittelpunkt, c.gradToX(zeit[2]*360/60,durchmesser,durchmesser/2), c.gradToY(zeit[2]*360/60,durchmesser,durchmesser/2));
+	    g.drawLine(mittelpunkt, mittelpunkt, c.gradToX((zeit[2]+((double)zeit[3]/1000))*360/60,durchmesser,durchmesser/2), c.gradToY((zeit[2]+((double)zeit[3]/1000))*360/60,durchmesser,durchmesser/2));
 	    g.setColor(Color.BLACK);
 	    
 	    //Stundenzeiger
-	    g.fillPolygon(new int[]{mittelpunkt,  c.gradToX((zeit[0]+(double)zeit[1]/60)*360/12-5,durchmesser,durchmesser/4),c.gradToX((zeit[0]+(double)zeit[1]/60)*360/12,durchmesser,durchmesser/3),c.gradToX((zeit[0]+(double)zeit[1]/60)*360/12+5,durchmesser,durchmesser/4)}, 
-	    new int[]{mittelpunkt, c.gradToY((zeit[0]+(double)zeit[1]/60)*360/12-5,durchmesser,durchmesser/4),c.gradToY((zeit[0]+(double)zeit[1]/60)*360/12,durchmesser,durchmesser/3),c.gradToY((zeit[0]+(double)zeit[1]/60)*360/12+5,durchmesser,durchmesser/4)}, 4);
+	    g.fillPolygon(new int[]{mittelpunkt,  
+	    		c.gradToX((zeit[0]+(double)zeit[1]/60)*360/12-5,durchmesser,durchmesser/4),
+	    		c.gradToX((zeit[0]+(double)zeit[1]/60)*360/12,durchmesser,durchmesser/3),
+	    		c.gradToX((zeit[0]+(double)zeit[1]/60)*360/12+5,durchmesser,durchmesser/4)}, 
+	    new int[]{mittelpunkt, 
+	    		c.gradToY((zeit[0]+(double)zeit[1]/60)*360/12-5,durchmesser,durchmesser/4),
+	    		c.gradToY((zeit[0]+(double)zeit[1]/60)*360/12,durchmesser,durchmesser/3),
+	    		c.gradToY((zeit[0]+(double)zeit[1]/60)*360/12+5,durchmesser,durchmesser/4)}, 4);
 	    
 	    g.fillPolygon(new int[]{mittelpunkt,  
-	    		c.gradToX((zeit[1]*360/60-3+(double)zeit[2]/60),durchmesser,durchmesser/4),
-	    		c.gradToX((zeit[1]*360/60+(double)zeit[2]/60),durchmesser,durchmesser/2),
-	    		c.gradToX((zeit[1]*360/60+3+(double)zeit[2]/60),durchmesser,durchmesser/4)}, 
+	    		c.gradToX(((zeit[1]+(double)zeit[2]/60)*360/60-3),durchmesser,durchmesser/4),
+	    		c.gradToX(((zeit[1]+(double)zeit[2]/60)*360/60),durchmesser,durchmesser/2),
+	    		c.gradToX(((zeit[1]+(double)zeit[2]/60)*360/60+3),durchmesser,durchmesser/4)}, 
 	    new int[]{mittelpunkt, 
-	    		c.gradToY((zeit[1]*360/60-3+(double)zeit[2]/60),durchmesser,durchmesser/4),
-	    		c.gradToY((zeit[1]*360/60+(double)zeit[2]/60),durchmesser,durchmesser/2),
-	    		c.gradToY((zeit[1]*360/60+3+(double)zeit[2]/60),durchmesser,durchmesser/4)},4);
+	    		c.gradToY(((zeit[1]+(double)zeit[2]/60)*360/60-3),durchmesser,durchmesser/4),
+	    		c.gradToY(((zeit[1]+(double)zeit[2]/60)*360/60),durchmesser,durchmesser/2),
+	    		c.gradToY(((zeit[1]+(double)zeit[2]/60)*360/60+3),durchmesser,durchmesser/4)},4);
 	    
 		g.fillOval(durchmesser/2-durchmesser/80, durchmesser/2-durchmesser/80, durchmesser/40, durchmesser/40); // Den Mittelpunkt kennzeichnen
 	
