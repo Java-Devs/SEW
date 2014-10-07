@@ -45,8 +45,8 @@ public class Work{
 	 * @param r den Radius
 	 * @return den x-Wert
 	 */
-	public int gradToX(double grad, int radius,int r) { 
-		return (int)((radius/2) + r * Math.cos(Math.toRadians(grad)-Math.PI/2)+0.5); 
+	public int gradToX(double grad, int durchmesser,int r) { 
+		return (int)((durchmesser/2) + r * Math.cos(Math.toRadians(grad)-Math.PI/2)+0.5); 
 	}
 	/**
 	 * Rechnet von einer Gradanzahl und Radius eines Kreis den y-Wert aus.
@@ -55,7 +55,7 @@ public class Work{
 	 * @param r den Radius
 	 * @return den y-Wert
 	 */
-	public int gradToY(double grad,int radius, int r) {
-		return (int)((radius/2) + r * Math.sin(Math.toRadians(grad)-Math.PI/2)+0.5); 
+	public int gradToY(double grad,int durchmesser, int r) {
+		return (int)((durchmesser/2) + r * Math.sin(Math.toRadians(grad)-Math.PI/2)+0.5); 
 	}
 }
