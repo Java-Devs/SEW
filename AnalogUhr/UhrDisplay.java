@@ -76,7 +76,6 @@ public class UhrDisplay extends JPanel{
 		g.fillOval(durchmesser/2-durchmesser/80, durchmesser/2-durchmesser/80, durchmesser/40, durchmesser/40); // Den Mittelpunkt kennzeichnen
 	
 		Image pic= new ImageIcon("C:/Users/Bleedinghina/repository/SEW/AnalogUhr/data/"+c.getMondStatus()+".png").getImage();
-		System.out.println(c.getMondStatus());
 		g.drawImage(pic, mittelpunkt/2, (int)(mittelpunkt*1.2), mittelpunkt/3,mittelpunkt/3, null);
 	}
 	
