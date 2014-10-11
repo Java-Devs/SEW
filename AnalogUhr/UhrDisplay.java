@@ -1,7 +1,6 @@
 package goebel;
 
 import java.awt.*;
-import java.util.Calendar;
 import javax.swing.*;
 
 /**
@@ -70,6 +69,7 @@ public class UhrDisplay extends JPanel{
 	    // Sekundenzeiger
 		g.setColor(Color.RED);
 	    g.drawLine(mittelpunkt, mittelpunkt, c.gradToX((zeit[2]+((double)zeit[3]/1000))*360/60,durchmesser,durchmesser/2), c.gradToY((zeit[2]+((double)zeit[3]/1000))*360/60,durchmesser,durchmesser/2));
+	    // Zweiter Strich damit es ueber die Nabe ragt.
 	    g.drawLine(mittelpunkt, mittelpunkt, c.gradToX((zeit[2]+(double)zeit[3]/1000)*360/60,durchmesser,-durchmesser/10), c.gradToY((zeit[2]+(double)zeit[3]/1000)*360/60,durchmesser,-durchmesser/10));
 	    
 	    g.setColor(Color.BLACK);
@@ -85,13 +85,13 @@ public class UhrDisplay extends JPanel{
 	    		c.gradToY((zeit[0]+(double)zeit[1]/60)*360/12+5,durchmesser,durchmesser/4)}, 4);
 	    //Minutenzeiger
 	    g.fillPolygon(new int[]{mittelpunkt,  
-	    		c.gradToX(((zeit[1]+(double)zeit[2]/60)*360/60-3),durchmesser,durchmesser/4),
+	    		c.gradToX(((zeit[1]+(double)zeit[2]/60)*360/60-3.5),durchmesser,(int)(durchmesser/2.5)),
 	    		c.gradToX(((zeit[1]+(double)zeit[2]/60)*360/60),durchmesser,durchmesser/2),
-	    		c.gradToX(((zeit[1]+(double)zeit[2]/60)*360/60+3),durchmesser,durchmesser/4)}, 
+	    		c.gradToX(((zeit[1]+(double)zeit[2]/60)*360/60+3.5),durchmesser,(int)(durchmesser/2.5))}, 
 	    new int[]{mittelpunkt, 
-	    		c.gradToY(((zeit[1]+(double)zeit[2]/60)*360/60-3),durchmesser,durchmesser/4),
+	    		c.gradToY(((zeit[1]+(double)zeit[2]/60)*360/60-3.5),durchmesser,(int)(durchmesser/2.5)),
 	    		c.gradToY(((zeit[1]+(double)zeit[2]/60)*360/60),durchmesser,durchmesser/2),
-	    		c.gradToY(((zeit[1]+(double)zeit[2]/60)*360/60+3),durchmesser,durchmesser/4)},4);
+	    		c.gradToY(((zeit[1]+(double)zeit[2]/60)*360/60+3.5),durchmesser,(int)(durchmesser/2.5))},4);
 	    //Mittelpunkt (Nabe)
 		g.fillOval(durchmesser/2-durchmesser/80, durchmesser/2-durchmesser/80, durchmesser/40, durchmesser/40); // Den Mittelpunkt kennzeichnen
 	}
