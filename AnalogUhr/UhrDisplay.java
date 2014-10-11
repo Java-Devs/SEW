@@ -23,6 +23,8 @@ public class UhrDisplay extends JPanel{
 	
 	@Override
 	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		Graphics2D g2d = (Graphics2D)g;
 		g.setColor(Color.GRAY);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight()); // Hintergrund in grau
 		g.setColor(new Color(152,223,243));
@@ -35,6 +37,11 @@ public class UhrDisplay extends JPanel{
 		}
 		g.fillOval(0, 0, durchmesser, durchmesser); // Die Uhr
 		g.setColor(Color.BLACK);
+		for (int i = 0; i < 4; i++) { // Die Striche fuer die Stunden
+			g2d.setStroke(new BasicStroke(2));
+			g2d.drawLine(c.gradToX(i*360/4,durchmesser,durchmesser/2),c.gradToY(i*360/4,durchmesser,durchmesser/2),c.gradToX(i*360/4,durchmesser,(int)(durchmesser/2.5)),c.gradToY(i*360/4,durchmesser,(int)(durchmesser/2.5)));
+		}
+		g2d.setStroke(new BasicStroke(1));
 		for (int i = 0; i < 12; i++) { // Die Striche fuer die Stunden
 			g.drawLine(c.gradToX(i*360/12,durchmesser,durchmesser/2),c.gradToY(i*360/12,durchmesser,durchmesser/2),c.gradToX(i*360/12,durchmesser,(int)(durchmesser/2.5)),c.gradToY(i*360/12,durchmesser,(int)(durchmesser/2.5)));
 		}
@@ -47,10 +54,12 @@ public class UhrDisplay extends JPanel{
 	    g.drawRect(mittelpunkt+mittelpunkt/4, mittelpunkt-mittelpunkt/11, durchmesser/4, durchmesser/10);
 	    g.setFont(new Font("Arial",Font.PLAIN,mittelpunkt/10));
 	    g.drawString(date[3]+","+date[2]+"."+date[1], mittelpunkt+(int)(mittelpunkt/3.5), mittelpunkt+mittelpunkt/20);
-	
+		Image pic= new ImageIcon("C:/Users/Bleedinghina/repository/SEW/AnalogUhr/data/"+c.getMondStatus()+".png").getImage();
+		g.drawImage(pic, mittelpunkt/2, (int)(mittelpunkt*1.2), mittelpunkt/3,mittelpunkt/3, null);
 	    zeit = c.getZeit();
 	    g.setColor(Color.RED);
 	    // Sekundenzeiger
+	    g2d.setStroke(new BasicStroke(2));
 	    g.drawLine(mittelpunkt, mittelpunkt, c.gradToX((zeit[2]+((double)zeit[3]/1000))*360/60,durchmesser,durchmesser/2), c.gradToY((zeit[2]+((double)zeit[3]/1000))*360/60,durchmesser,durchmesser/2));
 	    g.setColor(Color.BLACK);
 	    
@@ -74,9 +83,6 @@ public class UhrDisplay extends JPanel{
 	    		c.gradToY(((zeit[1]+(double)zeit[2]/60)*360/60+3),durchmesser,durchmesser/4)},4);
 	    
 		g.fillOval(durchmesser/2-durchmesser/80, durchmesser/2-durchmesser/80, durchmesser/40, durchmesser/40); // Den Mittelpunkt kennzeichnen
-	
-		Image pic= new ImageIcon("C:/Users/Bleedinghina/repository/SEW/AnalogUhr/data/"+c.getMondStatus()+".png").getImage();
-		g.drawImage(pic, mittelpunkt/2, (int)(mittelpunkt*1.2), mittelpunkt/3,mittelpunkt/3, null);
 	}
 	
 }
