@@ -2,7 +2,6 @@ package goebel;
 
 import java.awt.*;
 import java.util.Calendar;
-
 import javax.swing.*;
 
 /**
@@ -17,17 +16,24 @@ public class UhrDisplay extends JPanel{
 	private String[] date; // Datum Wochentag,Jahr,Monat,Tag wird gespeichert
 	private int[] zeit; // Zeit wird gespeicher Stunden,Minuten,Sekunden,Millisekunden
 
+	/**
+	 * Konsturktor zum Hinzufuegen von Control (fuer Berechnungen)
+	 * @param c Instanz von Klasse Control
+	 */
 	public UhrDisplay(Control c){
 		this.c = c;
 	}
 	
 	@Override
+	/**
+	 * Zeichnet eine Uhr mit Minuten und Stundenstriche, sowie Sekunden-,Minuten- und Stundenzeiger.
+	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		Graphics2D g2d = (Graphics2D)g;
+		Graphics2D g2d = (Graphics2D)g; // wird benoetigt fuer die Dicke der Striche
 		g.setColor(Color.GRAY);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight()); // Hintergrund in grau
-		g.setColor(new Color(152,223,243));
+		g.setColor(new Color(152,223,243)); // tuerkis
 		if(this.getWidth()>=this.getHeight()){ // Damit sich die Uhr anpasst und zu kein Oval wird
 			durchmesser = this.getHeight();
 			mittelpunkt = durchmesser/2;
@@ -38,7 +44,7 @@ public class UhrDisplay extends JPanel{
 		g.fillOval(0, 0, durchmesser, durchmesser); // Die Uhr
 		g.setColor(Color.BLACK);
 		for (int i = 0; i < 4; i++) { // Die Striche fuer die Stunden
-			g2d.setStroke(new BasicStroke(2));
+			g2d.setStroke(new BasicStroke(2)); // Strichdicke 1 dicker
 			g2d.drawLine(c.gradToX(i*360/4,durchmesser,durchmesser/2),c.gradToY(i*360/4,durchmesser,durchmesser/2),c.gradToX(i*360/4,durchmesser,(int)(durchmesser/2.5)),c.gradToY(i*360/4,durchmesser,(int)(durchmesser/2.5)));
 		}
 		g2d.setStroke(new BasicStroke(1));
@@ -54,13 +60,18 @@ public class UhrDisplay extends JPanel{
 	    g.drawRect(mittelpunkt+mittelpunkt/4, mittelpunkt-mittelpunkt/11, durchmesser/4, durchmesser/10);
 	    g.setFont(new Font("Arial",Font.PLAIN,mittelpunkt/10));
 	    g.drawString(date[3]+","+date[2]+"."+date[1], mittelpunkt+(int)(mittelpunkt/3.5), mittelpunkt+mittelpunkt/20);
-		Image pic= new ImageIcon("C:/Users/Bleedinghina/repository/SEW/AnalogUhr/data/"+c.getMondStatus()+".png").getImage();
+		
+	    // Mond zeichnen
+	    Image pic= new ImageIcon("C:/Users/Bleedinghina/repository/SEW/AnalogUhr/data/"+c.getMondStatus()+".png").getImage();
 		g.drawImage(pic, mittelpunkt/2, (int)(mittelpunkt*1.2), mittelpunkt/3,mittelpunkt/3, null);
-	    zeit = c.getZeit();
-	    g.setColor(Color.RED);
+	   
+		zeit = c.getZeit(); // Speichern von Millisekunden[0], Sekunden[1], Minuten[2], Stunden[3]
+	   
 	    // Sekundenzeiger
-	    g2d.setStroke(new BasicStroke(2));
+		g.setColor(Color.RED);
 	    g.drawLine(mittelpunkt, mittelpunkt, c.gradToX((zeit[2]+((double)zeit[3]/1000))*360/60,durchmesser,durchmesser/2), c.gradToY((zeit[2]+((double)zeit[3]/1000))*360/60,durchmesser,durchmesser/2));
+	    g.drawLine(mittelpunkt, mittelpunkt, c.gradToX((zeit[2]+(double)zeit[3]/1000)*360/60,durchmesser,-durchmesser/10), c.gradToY((zeit[2]+(double)zeit[3]/1000)*360/60,durchmesser,-durchmesser/10));
+	    
 	    g.setColor(Color.BLACK);
 	    
 	    //Stundenzeiger
@@ -72,7 +83,7 @@ public class UhrDisplay extends JPanel{
 	    		c.gradToY((zeit[0]+(double)zeit[1]/60)*360/12-5,durchmesser,durchmesser/4),
 	    		c.gradToY((zeit[0]+(double)zeit[1]/60)*360/12,durchmesser,durchmesser/3),
 	    		c.gradToY((zeit[0]+(double)zeit[1]/60)*360/12+5,durchmesser,durchmesser/4)}, 4);
-	    
+	    //Minutenzeiger
 	    g.fillPolygon(new int[]{mittelpunkt,  
 	    		c.gradToX(((zeit[1]+(double)zeit[2]/60)*360/60-3),durchmesser,durchmesser/4),
 	    		c.gradToX(((zeit[1]+(double)zeit[2]/60)*360/60),durchmesser,durchmesser/2),
@@ -81,7 +92,7 @@ public class UhrDisplay extends JPanel{
 	    		c.gradToY(((zeit[1]+(double)zeit[2]/60)*360/60-3),durchmesser,durchmesser/4),
 	    		c.gradToY(((zeit[1]+(double)zeit[2]/60)*360/60),durchmesser,durchmesser/2),
 	    		c.gradToY(((zeit[1]+(double)zeit[2]/60)*360/60+3),durchmesser,durchmesser/4)},4);
-	    
+	    //Mittelpunkt (Nabe)
 		g.fillOval(durchmesser/2-durchmesser/80, durchmesser/2-durchmesser/80, durchmesser/40, durchmesser/40); // Den Mittelpunkt kennzeichnen
 	}
 	
