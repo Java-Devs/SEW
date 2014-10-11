@@ -10,16 +10,28 @@ import java.util.Calendar;
 public class Work{
 	private Calendar cal = Calendar.getInstance();
 
+	/**
+	 * Getter-Methode fuer die Wochentage zb Mo fuer Montag
+	 * @return ersten 2 Buchstaben von dem Wochentag beginnend mit So (Laenge = 7)
+	 */
 	public String getWochentag(){
 		int a = cal.get(Calendar.DAY_OF_WEEK);
 		String[] days = {"So","Mo","Di","Mi","Do","Fr","Sa"};
 		return days[a-1];
 	}
+	/**
+	 * Getter-Methode fuer das Datum exkl. Uhrzeit
+	 * @return ein String-Array bestehend aus Jahr,Monat,Tag und Wochentag(Mo,Di,..) in dieser Reihenfolge
+	 */
 	public String[] getDatum(){
 		cal = Calendar.getInstance();
 		int month = cal.get(Calendar.MONTH)+1;
 		return new String[]{""+cal.get(Calendar.YEAR),""+month,""+cal.get(Calendar.DAY_OF_MONTH),getWochentag()};
 	}
+	/**
+	 * Getter-Methode fuer die Zeit exkl. Datum
+	 * @return ein int-Array bestehend aus Stunde,Minute,Sekunde und Millisekunden in dieser Reihenfolge
+	 */
 	public int[] getZeit(){
 		cal = Calendar.getInstance();
 		return new int[]{cal.get(Calendar.HOUR),cal.get(Calendar.MINUTE),cal.get(Calendar.SECOND),cal.get(Calendar.MILLISECOND)};
@@ -45,6 +57,7 @@ public class Work{
 		return (int)((durchmesser/2) + r * Math.sin(Math.toRadians(grad)-Math.PI/2)+0.5); 
 	}
 	/**
+	 * Berechnet den Mondstatus mit 7 verschiedenen Werten.
 	 * @author http://www.voidware.com/moon_phase.htm
 	 * @param y das Jahr
 	 * @param m das Monat
@@ -52,27 +65,27 @@ public class Work{
 	 * @return die Phase des Mondes (zwischen 0-7, von zunehmend zu abnehmend)
 	 */
 	public int getMoonPhase() {
-         int y = cal.get(Calendar.YEAR);
-         int m = cal.get(Calendar.MONTH);
-         int d = cal.get(Calendar.DAY_OF_MONTH);
-		 double c;
-		 double e;
-		 double jd;
-		 int b;
+		int y = cal.get(Calendar.YEAR);
+		int m = cal.get(Calendar.MONTH);
+		int d = cal.get(Calendar.DAY_OF_MONTH);
+		double c;
+		double e;
+		double jd;
+		int b;
 
-		 if (m < 3) {
-		 y--;
-		 m += 12;
-		 }
-		 ++m;
-		 c = 365.25 * y;
-		 e = 30.6 * m;
-		 jd = c + e + d - 694039.09; /* jd is total days elapsed */
-		 jd /= 29.53; /* divide by the moon cycle (29.53 days) */
-		 b = (int)jd; /* int(jd) -> b, take integer part of jd */
-		 jd -= b; /* subtract integer part to leave fractional part of original jd */
-		 b = (int)(jd * 8 + 0.5); /* scale fraction from 0-8 and round by adding 0.5 */
-		 b = b & 7; /* 0 and 8 are the same so turn 8 into 0 */
-		 return b;
-		 }
+		if (m < 3) {
+			y--;
+			m += 12;
+		}
+		++m;
+		c = 365.25 * y;
+		e = 30.6 * m;
+		jd = c + e + d - 694039.09;
+		jd /= 29.53;
+		b = (int)jd;
+		jd -= b;
+		b = (int)(jd * 8 + 0.5);
+		b = b & 7;
+		return b;
+	}
 }
