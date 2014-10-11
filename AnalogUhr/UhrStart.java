@@ -12,10 +12,10 @@ public class UhrStart{
 	public static void main (String[] args){
 		JFrame jf = new JFrame("AnalogUhr");
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Update up = new Update(10);
-		up.start();
+		Update up = new Update(10);// Updater updatet alle 10 millisek das bild
+		up.start();// Starten des Threads
 		jf.setBounds(350, 150, 400, 500); 
 		jf.setVisible(true);
-		jf.add(up.getConrtol().getDieuhr(),BorderLayout.CENTER);
+		jf.add(up.getControl().getDieuhr(),BorderLayout.CENTER);
 	}
 }

@@ -1,6 +1,5 @@
 package goebel;
 
-import java.util.Calendar;
 /**
  * Ruft update() nach einer gewissen Zeit auf (updateZeit)
  * @author Melanie Goebel
