@@ -1,15 +1,26 @@
 package goebel;
 
 import java.util.Calendar;
-
+/**
+ * Ruft update() nach einer gewissen Zeit auf (updateZeit)
+ * @author Melanie Goebel
+ * @version 2014-10-11
+ */
 public class Update extends Thread{
 	private int updateZeit;
 	private Control c = new Control();
 
+	/**
+	 * Konstruktor, setzt updateZeit
+	 * @param updateZeit
+	 */
 	public Update(int updateZeit){
 		this.updateZeit = updateZeit;
 	}
 
+	/**
+	 * Ruft nach einer gewissen Zeit update() auf.
+	 */
 	@Override
 	public void run () {
 		while (true) {
@@ -23,7 +34,11 @@ public class Update extends Thread{
 
 		}
 	}
-	public Control getConrtol(){
+	/**
+	 * Getter Methode fuer Control
+	 * @return das Control
+	 */
+	public Control getControl(){
 		return c;
 	}
 }
