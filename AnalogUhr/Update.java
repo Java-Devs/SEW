@@ -28,6 +28,7 @@ public class Update extends Thread{
 				c.update();
 			} 
 			catch (InterruptedException e) {
+				System.err.println("Fehler beim Updaten der Uhr");
 			}
 			
 
