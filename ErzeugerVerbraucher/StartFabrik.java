@@ -7,7 +7,7 @@ package goebel;
  */
 public class StartFabrik{
 	public static void main (String[] args){
-		Lager l = new Lager();
+		ErstesLager l = new ErstesLager();
 		Thread e1 = new Thread(new Erzeuger(l,100,new SensitiveTaschentuch()));
 		Thread e2 = new Thread(new Erzeuger(l,20,new NormalTaschentuch()));
 		Thread e3 = new Thread(new Erzeuger(l,80,new KompaktTaschentuch()));

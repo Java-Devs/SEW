@@ -1,9 +1,9 @@
 package goebel;
 public class Status implements Runnable{
-	private Lager l;
+	private ErstesLager l;
 	private int maxtaktzeit;
 	
-	public Status(Lager l, int maxtaktzeit){
+	public Status(ErstesLager l, int maxtaktzeit){
 		this.l = l;
 		this.maxtaktzeit = maxtaktzeit;
 	}

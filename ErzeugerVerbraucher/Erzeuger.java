@@ -3,11 +3,11 @@ package goebel;
 
 public class Erzeuger implements Runnable{
 
-	private Lager l;
+	private ErstesLager l;
 	private int taktzeit;
 	private Produkt p;
 
-	public Erzeuger(Lager l, int taktzeit, Produkt p){
+	public Erzeuger(ErstesLager l, int taktzeit, Produkt p){
 		this.l = l;
 		this.taktzeit = taktzeit;
 		this.p = p;

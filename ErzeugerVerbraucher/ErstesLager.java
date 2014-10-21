@@ -8,7 +8,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author Melanie Goebel
  * @version 2014-10-18
  */
-public class Lager{
+public class ErstesLager{
 	private ReentrantLock lock;
 	private final int groesse = 5000;
 

@@ -1,9 +1,9 @@
 package goebel;
 public class Verbraucher implements Runnable{
-	private Lager l;
+	private ErstesLager l;
 	private int taktzeit;
 
-	public Verbraucher(Lager l, int taktzeit){
+	public Verbraucher(ErstesLager l, int taktzeit){
 		this.l = l;
 		this.taktzeit = taktzeit;
 	}
