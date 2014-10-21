@@ -13,15 +13,15 @@ public class StartFabrik{
 		Thread e3 = new Thread(new Erzeuger(l,800,new KompaktTaschentuch()));
 		Thread e4 = new Thread(new Erzeuger(l,800,new KompaktTaschentuch()));
 		
-		Verbraucher v1 = new Verbraucher(l,400);
-		Verbraucher v2 = new Verbraucher(l,300);
-		Verbraucher v3 = new Verbraucher(l,600);
+		Thread v1 = new Thread(new Verbraucher(l,400));
+		Thread v2 = new Thread(new Verbraucher(l,300));
+		Thread v3 = new Thread(new Verbraucher(l,600));
 		
 		e1.start();
 		e2.start();
 		e3.start();
-//		v1.run();
-//		v2.run();
-//		v3.run();
+		v1.start();
+		v2.start();
+		v3.start();
 	}
 }

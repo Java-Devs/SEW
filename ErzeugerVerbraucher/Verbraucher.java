@@ -11,8 +11,14 @@ public class Verbraucher implements Runnable{
 	public void run() {
 		while(true){
 			try {
+				int anzahl = (int)(Math.random()*100)+10;
+				if(l.gibtGenuegend(anzahl)){
+					Produkt[] produkte = l.getProdukte();
+					Produkt p = produkte[(int)(Math.random()*produkte.length)];			
+					l.abfassen(p, anzahl);
+				}
 				Thread.sleep(taktzeit);
-				
+
 			} catch (InterruptedException e) {
 				System.err.println("Fehler beim Verbraucher");
 			}
