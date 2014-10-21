@@ -7,9 +7,11 @@ package goebel;
  */
 public class StartFabrik{
 	public static void main (String[] args){
-		Erzeuger e1 = new Erzeuger();
-		Erzeuger e2 = new Erzeuger();
-		Erzeuger e3 = new Erzeuger();
+		Lager l = new Lager();
+		Erzeuger e1 = new Erzeuger(l,400,new SensitiveTaschentuch());
+		Erzeuger e2 = new Erzeuger(l,300,new NormalTaschentuch());
+		Erzeuger e3 = new Erzeuger(l,500,new KompaktTaschentuch());
+		Erzeuger e4 = new Erzeuger(l,500,new KompaktTaschentuch());
 		
 		Verbraucher v1 = new Verbraucher();
 		Verbraucher v2 = new Verbraucher();
