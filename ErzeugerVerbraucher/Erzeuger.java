@@ -16,7 +16,7 @@ public class Erzeuger implements Runnable{
 	public void run() {
 		while(true){
 			try {
-				int anzahl = (int)(Math.random()*300)+10;
+				int anzahl = 1;
 				if(l.gehtSichAus(anzahl)){
 					l.lagern(p, anzahl);
 				}

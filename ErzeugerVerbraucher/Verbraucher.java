@@ -11,7 +11,7 @@ public class Verbraucher implements Runnable{
 	public void run() {
 		while(true){
 			try {
-				int anzahl = (int)(Math.random()*100)+10;
+				int anzahl = (int)(Math.random()*10)+1;
 				if(l.gibtGenuegend(anzahl)){
 					Produkt[] produkte = l.getProdukte();
 					Produkt p = produkte[(int)(Math.random()*produkte.length)];			
