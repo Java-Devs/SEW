@@ -8,32 +8,36 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author Melanie Goebel
  * @version 2014-10-18
  */
-public class ErstesLager{
-	private ReentrantLock lock;
-	private final int groesse = 5000;
-
+public class ErstesLager implements Lager{
+	private final int groesse = 5000; // Groesse des Lagers
 	private HashMap<Produkt, Integer> lagernd = new HashMap<Produkt, Integer>();
 
-	public synchronized int lagern(Produkt p,int anzahl){
+	@Override
+	public boolean lagern(Produkt p,int anzahl){
 		if(getWievoll()+anzahl < groesse){
 			int derz = 0;
 			if(lagernd.get(p)!=null) 
 				derz = lagernd.get(p);
 			lagernd.put(p, derz+anzahl);
-			return 0;
+			return true;
 		}else{
-			return -1;
+			return false;
 		}
 	}
-	public synchronized int abfassen(Produkt p, int anzahl){
+	@Override
+	public boolean abfassen(Produkt p, int anzahl){
 		int derz = lagernd.get(p);
 		if(derz-anzahl > 0){
 			lagernd.put(p, derz-anzahl);
-			return 0;
+			return true;
 		}else{
-			return -1;
+			return false;
 		}
 	}
+	/**
+	 * Gibt alle Produkte und deren Anzahl aus.
+	 * @return produkte mit deren anzahl speichert in Eintrag in einem Array
+	 */
 	public synchronized Eintrag[] getStatus(){
 		Eintrag[] ein = new Eintrag[lagernd.size()];
 		int i = 0;
@@ -43,6 +47,10 @@ public class ErstesLager{
 		}
 		return ein;
 	}
+	/**
+	 * Rechnet sich aus wievoll das Lager ist.
+	 * @return wieviele Produkte gelagert sind
+	 */
 	private int getWievoll(){
 		int wv = 0;
 		for(Entry<Produkt, Integer> e : lagernd.entrySet()){
@@ -50,16 +58,20 @@ public class ErstesLager{
 		}
 		return wv;
 	}
+	@Override
 	public boolean gehtSichAus(int anzahl){
 		if(anzahl+getWievoll() >= groesse)
 			return false;
 		return true;
 	}
-	public boolean gibtGenuegend(int anzahl){
-		if(getWievoll()-anzahl <= 0)
+	@Override
+	public boolean gibtGenuegend(Produkt p, int anzahl){
+		int gr = lagernd.get(p);
+		if(gr-anzahl <= 0)
 			return false;
 		return true;
 	}
+	@Override
 	public Produkt[] getProdukte(){
 		Produkt[] produkte = new Produkt[lagernd.size()];
 		int i = 0;
@@ -70,6 +82,7 @@ public class ErstesLager{
 		return produkte;
 	}
 	/**
+	 * Getter-Methode fuer die Grosse
 	 * @return the groesse
 	 */
 	public int getGroesse() {
