@@ -1,13 +1,23 @@
 package goebel;
 
-
+/**
+ * Lagert Produkte die erzeugt werden in einem Lager, ueberprueft vorher ob noch genuegend Platz ist
+ * @author Melanie Goebel
+ * @version 2014-10-23
+ */
 public class Erzeuger implements Runnable{
 
-	private ErstesLager l;
+	private Lager l;
 	private int taktzeit;
 	private Produkt p;
 
-	public Erzeuger(ErstesLager l, int taktzeit, Produkt p){
+	/**
+	 * Setzt Lager, die Taktzeit sowie das Produkt dass erstellt werden soll
+	 * @param l das Lager
+	 * @param taktzeit die Taktzeit in der gearbeitet wird
+	 * @param p das zu erzeugende Produkt
+	 */
+	public Erzeuger(Lager l, int taktzeit, Produkt p){
 		this.l = l;
 		this.taktzeit = taktzeit;
 		this.p = p;
@@ -17,7 +27,7 @@ public class Erzeuger implements Runnable{
 		while(true){
 			try {
 				int anzahl = 1;
-				if(l.gehtSichAus(anzahl)){
+				if(l.gehtSichAus(anzahl)){// Ueberpruefen ob noch Platz ist.
 					l.lagern(p, anzahl);
 				}
 				Thread.sleep(taktzeit);

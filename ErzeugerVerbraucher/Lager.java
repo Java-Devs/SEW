@@ -33,4 +33,14 @@ public interface Lager{
 	 * @return die Produkte die lagernd sind.
 	 */
 	public Produkt[] getProdukte();
+	/**
+	 * Rueckgabe des Status des Lagers
+	 * @return Produkte mit deren Anzahlen
+	 */
+	public Eintrag[] getStatus();
+	/**
+	 * Gibt die Groesse des Lagers an
+	 * @return wieviele Produkte ins Lager passen
+	 */
+	public int getGroesse();
 }
