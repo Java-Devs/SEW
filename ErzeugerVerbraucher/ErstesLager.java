@@ -13,7 +13,7 @@ public class ErstesLager implements Lager{
 	private HashMap<Produkt, Integer> lagernd = new HashMap<Produkt, Integer>();
 
 	@Override
-	public boolean lagern(Produkt p,int anzahl){
+	public synchronized boolean lagern(Produkt p,int anzahl){
 		if(getWievoll()+anzahl < groesse){
 			int derz = 0;
 			if(lagernd.get(p)!=null) 
@@ -25,7 +25,7 @@ public class ErstesLager implements Lager{
 		}
 	}
 	@Override
-	public boolean abfassen(Produkt p, int anzahl){
+	public synchronized boolean abfassen(Produkt p, int anzahl){
 		int derz = lagernd.get(p);
 		if(derz-anzahl > 0){
 			lagernd.put(p, derz-anzahl);
@@ -72,7 +72,7 @@ public class ErstesLager implements Lager{
 		return true;
 	}
 	@Override
-	public Produkt[] getProdukte(){
+	public synchronized Produkt[] getProdukte(){
 		Produkt[] produkte = new Produkt[lagernd.size()];
 		int i = 0;
 		for(Entry<Produkt, Integer> e : lagernd.entrySet()){
