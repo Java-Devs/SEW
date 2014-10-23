@@ -1,4 +1,9 @@
 package goebel;
+/**
+ * Ein Taschentuch speziell KompaktTaschentuch, dass den Namen zurueck gibt.
+ * @author Melanie Goebel
+ * @version 2014-10-23
+ */
 public class KompaktTaschentuch implements Produkt{
 	private String name;
 
@@ -15,5 +20,4 @@ public class KompaktTaschentuch implements Produkt{
 		return name;
 
 	}
-
 }
