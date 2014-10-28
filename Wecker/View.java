@@ -33,4 +33,28 @@ public class View extends JPanel{
 		this.add(exit);
 		
 	}
+
+	/**
+	 * Getter Methode fuer den Button namens deaktivieren
+	 * @return den Button namens deaktivieren
+	 */
+	public JButton getDeaktivieren() {
+		return deaktivieren;
+	}
+
+	/**
+	 * Getter Methode fuer den Button namens remove
+	 * @return den Button namens remove
+	 */
+	public JButton getRemove() {
+		return remove;
+	}
+
+	/**
+	 * Getter Methode fuer den Button namens exit
+	 * @return den Button exit
+	 */
+	public JButton getExit() {
+		return exit;
+	}
 }

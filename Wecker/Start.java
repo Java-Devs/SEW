@@ -13,8 +13,7 @@ public class Start{
 				Thread cl = new Thread(new CLIStart(w));
 				cl.start();
 			}if(args[0].equals("GUI")){
-				Thread gu = new Thread(new GUIStart(w));
-				gu.start();
+				GUIStart gui = new GUIStart(w);
 			}
 		}else{
 			System.err.println("Bitte Parameter angeben! Hilfe unter --help");
