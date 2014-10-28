@@ -1,22 +1,30 @@
 package goebel;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
 import javax.sound.sampled.*;
+import javax.swing.JButton;
 /**
  * Startet die GUI fuer den Weckclienten.
  * @author Melanie Goebel
  * @version 2014-10-27
  */
-public class GUIStart implements Observer{
-
+public class GUIStart implements Observer, ActionListener{
+	private View panel;
+	private Model frame;
+	private Wecker w;
 	/**
 	 * Startet ein neues Control und uebergibt ihn sich selbst sowie den Wecker
 	 * @param w
 	 */
 	public GUIStart(Wecker w){
-		new Control(w,this);
+		this.w = w;
+		this.panel = new View(this);
+		this.frame = new Model(panel,"Wecker");
+		w.anmelden(this);
 	}
 	
 	@Override
@@ -32,7 +40,20 @@ public class GUIStart implements Observer{
 			e.printStackTrace();
 		}
 		clip.start();// Abspielen des Tons
+		panel.setRemoveEnabled(true);
 
 	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		JButton b=(JButton)e.getSource();
+		if(b.equals(panel.getExit())){
+			w.abmelden(this);//abmelden bevor es beendet wird
+		    System.exit(0);
+		}else if(b.equals(panel.getRemove()))
+			w.abmelden(this);
+		else if(b.equals(panel.getDeaktivieren()))
+			System.out.println("Deaktivieren");
+	}
+
 
 }

@@ -22,7 +22,7 @@ public class View extends JPanel{
 	 * Zeichnen der Elemente
 	 * @param c das Control (Listener sind dort)
 	 */
-	public View(Control c){
+	public View(GUIStart c){
 		deaktivieren = new JButton("Deactivate");
 		remove = new JButton("Remove");
 		remove.setEnabled(removeEnabled);
@@ -49,7 +49,6 @@ public class View extends JPanel{
 	 */
 	public void setStatus1(String status){
 		status1.setText(status);
-		this.updateUI();
 	}
 	/**
 	 * Setzt den Status des Weckers, ob der Alarm an ist.
@@ -57,7 +56,6 @@ public class View extends JPanel{
 	 */
 	public void setStatus2(String status){
 		status2.setText(status);
-		this.updateUI();
 	}
 	/**
 	 * Getter Methode fuer den Button namens deaktivieren
@@ -88,6 +86,6 @@ public class View extends JPanel{
 	 */
 	public void setRemoveEnabled(boolean status){
 		this.removeEnabled = status;
-		this.updateUI();
+		remove.setEnabled(removeEnabled);
 	}
 }
