@@ -15,13 +15,13 @@ import javax.swing.JButton;
 public class GUIStart implements Observer, ActionListener{
 	private View panel;
 	private Model frame;
-	private Wecker w;
+	private Observable w;
 	private boolean deaktiviert = false;
 	/**
 	 * Startet ein neues Control und uebergibt ihn sich selbst sowie den Wecker
 	 * @param w
 	 */
-	public GUIStart(Wecker w){
+	public GUIStart(Observable w){
 		this.w = w;
 		this.panel = new View(this);
 		this.frame = new Model(panel,"Wecker");

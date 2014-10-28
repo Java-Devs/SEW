@@ -5,14 +5,14 @@ package goebel;
  * @version 2014-10-27
  */
 public class CLIStart implements Observer{
-	private Wecker w;
+	private Observable w;
 	private boolean exit;
 
 	/**
 	 * Konstruktor. Meldet sich an den Wecker an und gibt aus dass er angemeldet ist.
 	 * @param w
 	 */
-	public CLIStart(Wecker w){
+	public CLIStart(Observable w){
 		this.w = w;
 		w.anmelden(this);
 		System.out.println("Wecker ist aktiviert...");
