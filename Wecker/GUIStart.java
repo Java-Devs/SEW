@@ -16,6 +16,7 @@ public class GUIStart implements Observer, ActionListener{
 	private View panel;
 	private Model frame;
 	private Wecker w;
+	private boolean deaktiviert = false;
 	/**
 	 * Startet ein neues Control und uebergibt ihn sich selbst sowie den Wecker
 	 * @param w
@@ -29,6 +30,7 @@ public class GUIStart implements Observer, ActionListener{
 	
 	@Override
 	public void synchoniziereZustand() {
+		if(deaktiviert == false){
 		AudioInputStream ais;
 		Clip clip = null;
 		try {
@@ -39,7 +41,13 @@ public class GUIStart implements Observer, ActionListener{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		panel.setStatus2("alarm!");
 		clip.start();// Abspielen des Tons
+		}else{
+			panel.setStatus2("alarm cancled!");
+			panel.setDeactivateEnabled(true);
+			deaktiviert = false;
+		}
 		panel.setRemoveEnabled(true);
 
 	}
@@ -49,10 +57,13 @@ public class GUIStart implements Observer, ActionListener{
 		if(b.equals(panel.getExit())){
 			w.abmelden(this);//abmelden bevor es beendet wird
 		    System.exit(0);
-		}else if(b.equals(panel.getRemove()))
+		}else if(b.equals(panel.getRemove())){
+			panel.setStatus1("Deactivate");
 			w.abmelden(this);
-		else if(b.equals(panel.getDeaktivieren()))
-			System.out.println("Deaktivieren");
+		}else if(b.equals(panel.getDeaktivieren())){
+			deaktiviert = true;
+			panel.setDeactivateEnabled(false);
+		}
 	}
 
 

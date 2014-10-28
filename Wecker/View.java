@@ -10,27 +10,28 @@ import javax.swing.JPanel;
  * @version 2014-10-28
  */
 public class View extends JPanel{
-	private JButton deaktivieren;
+	private JButton deactivate;
 	private JButton remove;
 	private JButton exit;
 	private JLabel status;
 	private JLabel status1;
 	private JLabel status2;
 	private boolean removeEnabled = false;
+	private boolean deactivateEnabled = true;
 	
 	/**
 	 * Zeichnen der Elemente
 	 * @param c das Control (Listener sind dort)
 	 */
 	public View(GUIStart c){
-		deaktivieren = new JButton("Deactivate");
+		deactivate = new JButton("Deactivate");
 		remove = new JButton("Remove");
 		remove.setEnabled(removeEnabled);
 		exit = new JButton("Exit");
 		status = new JLabel("Timerstatus:");
 		status1 = new JLabel("Activate");
 		status2 = new JLabel("alarmend!");
-		deaktivieren.addActionListener(c);
+		deactivate.addActionListener(c);
 		remove.addActionListener(c);
 		exit.addActionListener(c);
 		
@@ -38,7 +39,7 @@ public class View extends JPanel{
 		this.add(status);
 		this.add(status1);
 		this.add(status2);
-		this.add(deaktivieren);
+		this.add(deactivate);
 		this.add(remove);
 		this.add(exit);
 		
@@ -62,7 +63,7 @@ public class View extends JPanel{
 	 * @return den Button namens deaktivieren
 	 */
 	public JButton getDeaktivieren() {
-		return deaktivieren;
+		return deactivate;
 	}
 
 	/**
@@ -87,5 +88,9 @@ public class View extends JPanel{
 	public void setRemoveEnabled(boolean status){
 		this.removeEnabled = status;
 		remove.setEnabled(removeEnabled);
+	}
+	public void setDeactivateEnabled(boolean status){
+		this.deactivateEnabled = status;
+		deactivate.setEnabled(deactivateEnabled);
 	}
 }
