@@ -7,6 +7,11 @@ import javax.swing.JFrame;
  * @version 2014-10-28
  */
 public class Model extends JFrame{
+	/**
+	 * Erstellt ein Fenster und fuegt das uebergebene Panel hinzu
+	 * @param layoutPanel das Panel zum anzeigen
+	 * @param titel den anzeigenden Titel als Text
+	 */
 	public Model(View layoutPanel, String titel){
 		super(titel);
 		this.add(layoutPanel);
