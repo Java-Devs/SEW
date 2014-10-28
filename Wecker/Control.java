@@ -17,21 +17,30 @@ public class Control implements ActionListener{
 	private View panel;
 	private Model frame;
 	private Wecker w;
+	private Observer o;
 
-	public Control(Wecker w){
+	/**
+	 * Konstruktor fuer den Control, speichert Wecker und Observer
+	 * @param w den Wecker
+	 * @param o den Observer
+	 */
+	public Control(Wecker w, Observer o){
 		this.w = w;
-		panel = new View(this);
-		frame = new Model(panel,"Wecker");
-        
+		this.panel = new View(this);
+		this.frame = new Model(panel,"Wecker");
+		this.o = o;
+		w.anmelden(o);
+
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JButton b=(JButton)e.getSource();
-		if(b.equals(panel.getExit()))
-			System.out.println("exit");
-		else if(b.equals(panel.getRemove()))
-			System.out.println("Remove");
+		if(b.equals(panel.getExit())){
+			w.abmelden(o);//abmelden bevor es beendet wird
+		    System.exit(0);
+		}else if(b.equals(panel.getRemove()))
+			w.abmelden(o);
 		else if(b.equals(panel.getDeaktivieren()))
 			System.out.println("Deaktivieren");
 	}

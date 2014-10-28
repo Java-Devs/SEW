@@ -9,6 +9,8 @@ public class Start{
 	public static void main(String[] args) {
 		if(args.length == 1){
 			Wecker w = new Wecker();
+			Thread weck = new Thread(w);
+			weck.start();
 			if(args[0].equals("CLI")){
 				Thread cl = new Thread(new CLIStart(w));
 				cl.start();

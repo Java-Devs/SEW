@@ -11,12 +11,14 @@ import javax.sound.sampled.*;
  */
 public class GUIStart implements Observer{
 
-
+	/**
+	 * Startet ein neues Control und uebergibt ihn sich selbst sowie den Wecker
+	 * @param w
+	 */
 	public GUIStart(Wecker w){
-		new Control(w);
+		new Control(w,this);
 	}
-
-
+	
 	@Override
 	public void synchoniziereZustand() {
 		AudioInputStream ais;
@@ -29,7 +31,7 @@ public class GUIStart implements Observer{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		clip.start();
+		clip.start();// Abspielen des Tons
 
 	}
 

@@ -13,14 +13,16 @@ public class Wecker implements Runnable,Observable{
 
 	@Override
 	public void run() {
-		try {
-			benachrichtige();
-			Thread.sleep(zeit);
-		} catch (InterruptedException e) {
-			System.err.println("Fehler beim Wecksystem");
+		while(true){
+			try {
+				benachrichtige();
+				Thread.sleep(zeit);
+			} catch (InterruptedException e) {
+				System.err.println("Fehler beim Wecksystem");
+			}
 		}
 	}
-	
+
 	@Override
 	public void anmelden(Observer o) {
 		observers.add(o);
@@ -35,7 +37,7 @@ public class Wecker implements Runnable,Observable{
 		for(Observer o: observers){
 			o.synchoniziereZustand();
 		}
-		
+
 	}
-	
+
 }
