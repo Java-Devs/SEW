@@ -9,9 +9,11 @@ public class Start{
 	public static void main(String[] args) {
 		if(args.length == 2){
 			if(args[0].equals("CLI")){
-				CLIStart.main(null);
+				Thread cl = new Thread(new CLIStart());
+				cl.start();
 			}if(args[0].equals("GUI")){
-				GUIStart.main(null);
+				Thread gu = new Thread(new GUIStart());
+				gu.start();
 			}
 		}else{
 			System.err.println("Bitte Parameter angeben! Hilfe unter --help");
