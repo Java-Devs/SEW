@@ -12,8 +12,7 @@ public class Start{
 			Thread weck = new Thread(w);
 			weck.start();
 			if(args[0].equals("CLI")){
-				Thread cl = new Thread(new CLIStart(w));
-				cl.start();
+				CLIStart cli = new CLIStart(w);
 			}if(args[0].equals("GUI")){
 				GUIStart gui = new GUIStart(w);
 			}

@@ -34,8 +34,8 @@ public class Wecker implements Runnable,Observable{
 
 	@Override
 	public void benachrichtige() {
-		for(Observer o: observers){
-			o.synchoniziereZustand();
+		for(int i=0; i < observers.size(); i++){
+			observers.get(i).synchoniziereZustand();
 		}
 
 	}
