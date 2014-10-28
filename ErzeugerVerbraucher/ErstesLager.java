@@ -38,6 +38,7 @@ public class ErstesLager implements Lager{
 	 * Gibt alle Produkte und deren Anzahl aus.
 	 * @return produkte mit deren anzahl speichert in Eintrag in einem Array
 	 */
+	@Override
 	public synchronized Eintrag[] getStatus(){
 		Eintrag[] ein = new Eintrag[lagernd.size()];
 		int i = 0;
@@ -85,6 +86,7 @@ public class ErstesLager implements Lager{
 	 * Getter-Methode fuer die Grosse
 	 * @return the groesse
 	 */
+	@Override
 	public int getGroesse() {
 		return groesse;
 	}
