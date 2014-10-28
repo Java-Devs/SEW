@@ -9,12 +9,13 @@ import java.util.ArrayList;
  */
 public class Wecker implements Runnable,Observable{
 	ArrayList<Observer> observers = new ArrayList<Observer>();
+	int zeit = 10000;
 
 	@Override
 	public void run() {
 		try {
 			benachrichtige();
-			Thread.sleep(10000);
+			Thread.sleep(zeit);
 		} catch (InterruptedException e) {
 			System.err.println("Fehler beim Wecksystem");
 		}
@@ -24,7 +25,6 @@ public class Wecker implements Runnable,Observable{
 	public void anmelden(Observer o) {
 		observers.add(o);
 	}
-
 	@Override
 	public void abmelden(Observer o) {
 		observers.remove(o);

@@ -7,12 +7,13 @@ package goebel;
  */
 public class Start{
 	public static void main(String[] args) {
-		if(args.length == 2){
+		if(args.length == 1){
+			Wecker w = new Wecker();
 			if(args[0].equals("CLI")){
-				Thread cl = new Thread(new CLIStart());
+				Thread cl = new Thread(new CLIStart(w));
 				cl.start();
 			}if(args[0].equals("GUI")){
-				Thread gu = new Thread(new GUIStart());
+				Thread gu = new Thread(new GUIStart(w));
 				gu.start();
 			}
 		}else{
