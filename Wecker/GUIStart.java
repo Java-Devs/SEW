@@ -27,25 +27,27 @@ public class GUIStart implements Observer, ActionListener{
 		this.frame = new Model(panel,"Wecker");
 		w.anmelden(this);
 	}
-	
+
 	@Override
 	public void synchoniziereZustand() {
 		if(deaktiviert == false){
-		AudioInputStream ais;
-		Clip clip = null;
-		try {
-			ais = AudioSystem.getAudioInputStream(new File("C:/Users/Bleedinghina/wecker.wav"));
-			clip = AudioSystem.getClip();
-			clip.open(ais);
-		} catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		panel.setStatus2("alarm!");
-		clip.start();// Abspielen des Tons
+			AudioInputStream ais;
+			Clip clip = null;
+			try {
+				ais = AudioSystem.getAudioInputStream(new File("C:/Users/Bleedinghina/wecker.wav"));
+				clip = AudioSystem.getClip();
+				clip.open(ais);
+			} catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			panel.setStatus2("alarm!");
+			clip.start();// Abspielen des Tons
+			panel.setStatus1("Activate");
 		}else{
 			panel.setStatus2("alarm cancled!");
 			panel.setDeactivateEnabled(true);
+			panel.setStatus1("Activate");
 			deaktiviert = false;
 		}
 		panel.setRemoveEnabled(true);
@@ -56,11 +58,11 @@ public class GUIStart implements Observer, ActionListener{
 		JButton b=(JButton)e.getSource();
 		if(b.equals(panel.getExit())){
 			w.abmelden(this);//abmelden bevor es beendet wird
-		    System.exit(0);
+			System.exit(0);
 		}else if(b.equals(panel.getRemove())){
-			panel.setStatus1("Deactivate");
 			w.abmelden(this);
 		}else if(b.equals(panel.getDeaktivieren())){
+			panel.setStatus1("Deactivate");
 			deaktiviert = true;
 			panel.setDeactivateEnabled(false);
 		}

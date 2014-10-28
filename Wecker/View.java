@@ -29,8 +29,8 @@ public class View extends JPanel{
 		remove.setEnabled(removeEnabled);
 		exit = new JButton("Exit");
 		status = new JLabel("Timerstatus:");
-		status1 = new JLabel("Activate");
-		status2 = new JLabel("alarmend!");
+		status1 = new JLabel("waiting..");
+		status2 = new JLabel("no alarm");
 		deactivate.addActionListener(c);
 		remove.addActionListener(c);
 		exit.addActionListener(c);
