@@ -30,6 +30,9 @@ public class Control{
 	public int gradToY(double grad, int radius, int r){
 		return work.gradToY(grad, radius, r);
 	}
+	public int getMondStatus(){
+		return work.getVollmond();
+	}
 	public void update(){
 	   dieuhr.repaint();
 	   dieuhr.validate();
