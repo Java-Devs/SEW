@@ -7,7 +7,7 @@ package goebel;
 public class Control{
 	private UhrDisplay dieuhr = new UhrDisplay(this);
 	private Work work = new Work();
-
+    
 	
 	/**
 	 * @return die View von Uhr
@@ -31,7 +31,7 @@ public class Control{
 		return work.gradToY(grad, radius, r);
 	}
 	public int getMondStatus(){
-		return work.getVollmond();
+		return work.getMoonPhase();
 	}
 	public void update(){
 	   dieuhr.repaint();

@@ -12,7 +12,7 @@ public class UhrStart{
 	public static void main (String[] args){
 		JFrame jf = new JFrame("AnalogUhr");
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Update up = new Update(20);
+		Update up = new Update(10);
 		up.start();
 		jf.setBounds(350, 150, 400, 500); 
 		jf.setVisible(true);
