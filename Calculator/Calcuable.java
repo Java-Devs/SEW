@@ -8,6 +8,6 @@ import java.util.List;
  */
 public interface Calcuable {
 
-	public List processCalculations();
+	public List<Double> processCalculations(List<Double> values, double modifier);
 
 }

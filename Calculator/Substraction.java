@@ -12,7 +12,7 @@ public class Substraction implements Calcuable {
 	/**
 	 * @see Calcuable#processCalculations()
 	 */
-	public List processCalculations() {
+	public List<Double> processCalculations(List<Double> values, double modifier) {
 		return null;
 	}
 

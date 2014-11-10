@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class Calculator {
 
-	private List values;
+	private List<Double> values;
 
 	private double modifier;
 
@@ -30,7 +30,7 @@ public class Calculator {
 
 	}
 
-	public List processCalculations() {
+	public List<Double> processCalculations() {
 		return null;
 	}
 
