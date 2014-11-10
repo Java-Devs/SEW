@@ -34,11 +34,11 @@ public class Calculator {
 		this.modifier = modifier;
 	}
 	/**
-	 * 
-	 * @param operator
+	 * Setzt den Operator fuer die Rechnung
+	 * @param operator als Calcuable
 	 */
 	public void setOperator(Calcuable operator){
-		
+	   this.operator = operator;	
 	}
 	/**
 	 * Loescht einen bestimmten Wert aus der Liste.
