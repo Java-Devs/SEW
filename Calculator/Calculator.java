@@ -52,7 +52,7 @@ public class Calculator {
 	 * @return die Ergebnisse in einer Liste
 	 */
 	public List<Double> processCalculations() {
-		return null;
+		return operator.processCalculations(values, modifier);
 	}
     /**
      * Gibt die Liste als Text zurueck.

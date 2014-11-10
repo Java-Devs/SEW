@@ -8,6 +8,12 @@ import java.util.List;
  */
 public interface Calcuable {
 
+	/**
+	 * Aendert die Werte in der Liste values um modifier und gibt die Aenderungen zurueck
+	 * @param values die Liste mit den Werten
+	 * @param modifier den zu aenderten Wert
+	 * @return die aenderungen der Liste um modifier, in einer Liste
+	 */
 	public List<Double> processCalculations(List<Double> values, double modifier);
 
 }
