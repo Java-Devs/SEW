@@ -41,7 +41,8 @@ public class Calculator {
 	   this.operator = operator;	
 	}
 	/**
-	 * Loescht einen bestimmten Wert aus der Liste.
+	 * Loescht einen bestimmten Wert aus der Liste 
+	 * (den ersten mit diesem Wert in der Liste, darauffolgende werden ignoriert).
 	 * @param den Wert in double
 	 */
 	public void removeValue(double value) {
@@ -52,6 +53,7 @@ public class Calculator {
 	 * @return die Ergebnisse in einer Liste
 	 */
 	public List<Double> processCalculations() {
+		
 		return operator.processCalculations(values, modifier);
 	}
     /**
