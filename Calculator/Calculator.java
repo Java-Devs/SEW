@@ -11,11 +11,12 @@ import java.util.List;
 public class Calculator {
 
 	private List<Double> values;
-
-	private double modifier;
-
+	private double modifier; // Wenn nicht gesetzt 0
 	private Calcuable operator;
 
+	/**
+	 * Erstellt ein ArrayList in den Attribut values.
+	 */
 	public Calculator() {
 		values = new ArrayList<Double>();
 	}
@@ -26,10 +27,10 @@ public class Calculator {
 	public void addValue(double value) {
 		values.add(value);
 	}
-    /**
-     * Setzt den modifier auf einen Wert
-     * @param den Wert in double
-     */
+	/**
+	 * Setzt den modifier auf einen Wert
+	 * @param den Wert in double
+	 */
 	public void setModifier(double modifier) {
 		this.modifier = modifier;
 	}
@@ -38,7 +39,7 @@ public class Calculator {
 	 * @param operator als Calcuable
 	 */
 	public void setOperator(Calcuable operator){
-	   this.operator = operator;	
+		this.operator = operator;	
 	}
 	/**
 	 * Loescht einen bestimmten Wert aus der Liste 
@@ -55,10 +56,10 @@ public class Calculator {
 	public List<Double> processCalculations() {	
 		return operator.processCalculations(values, modifier);
 	}
-    /**
-     * Gibt die Liste als Text zurueck.
-     * @return der Text
-     */
+	/**
+	 * Gibt die Liste als Text zurueck.
+	 * @return der Text
+	 */
 	public String toString() {
 		String v = "";
 		for(double value: values){
