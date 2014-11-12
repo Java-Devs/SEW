@@ -52,8 +52,7 @@ public class Calculator {
 	 * Rechnet alle Werte aus der Liste mit den modifier.
 	 * @return die Ergebnisse in einer Liste
 	 */
-	public List<Double> processCalculations() {
-		
+	public List<Double> processCalculations() {	
 		return operator.processCalculations(values, modifier);
 	}
     /**
@@ -67,5 +66,4 @@ public class Calculator {
 		}
 		return v;
 	}
-
 }
