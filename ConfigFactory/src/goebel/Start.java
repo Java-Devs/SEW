@@ -54,7 +54,7 @@ public class Start {
 			factory = new YamlConfigFactory();
 			break;
 		case "xml":
-			System.err.println("Not implemented");
+			factory = new XmlConfigFactory();
 			break;
 		}
 		factory.writeConfig(arguments.get("h").toString(), arguments.get("u").toString(), 
