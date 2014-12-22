@@ -22,10 +22,13 @@ public abstract class ConfigFactory {
 		String out = con.sendSelectCommand(hostname, user, password, database, command, delimeter);
 		String[] elements = out.split("\n");// splitten nach einen Zeilenumbruch
 		String[] element;
+		Element e;
 		String config="";
 		for(int i = 0; i < elements.length; i++){
 			element = elements[i].split(delimeter);
-			config += (createElement(element[2],element[1])).getString();
+			e=createElement(element[2],element[1]);
+			if( e != null)
+			config += e.getString();
 		}
 		System.out.println(config);
 
