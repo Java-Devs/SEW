@@ -11,16 +11,16 @@ public class YamlConfigFactory extends ConfigFactory{
 		Element e = null;
 		switch(type){
 		case "adapter":
-			e = new XmlAdapter(value);
+			e = new YamlAdapter(value);
 		break;
 		case "classname":
-			e = new XmlClassname(value);
+			e = new YamlClassname(value);
 		break;
 		case "dsn":
-			e = new XmlDsn(value);
+			e = new YamlDsn(value);
 		break;
 		case "user":
-			e = new XmlUser(value);
+			e = new YamlUser(value);
 		break;
 		}
 		return e;
