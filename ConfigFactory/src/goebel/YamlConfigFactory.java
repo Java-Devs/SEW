@@ -1,6 +1,6 @@
 package goebel;
 /**
- * 
+ * Fabrik fuer Yaml Config
  * @author Melanie Goebel
  * @version 2014-12-22
  */
@@ -11,16 +11,16 @@ public class YamlConfigFactory extends ConfigFactory{
 		Element e = null;
 		switch(type){
 		case "adapter":
-			e = new YamlAdapter(value);
+			e = new XmlAdapter(value);
 		break;
 		case "classname":
-			e = new YamlClassname(value);
+			e = new XmlClassname(value);
 		break;
 		case "dsn":
-			e = new YamlDsn(value);
+			e = new XmlDsn(value);
 		break;
 		case "user":
-			e = new YamlUser(value);
+			e = new XmlUser(value);
 		break;
 		}
 		return e;
