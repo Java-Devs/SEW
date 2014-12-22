@@ -14,7 +14,7 @@ public class YamlClassname extends Element{
 	}
 	@Override
 	public String getString() {
-		return "classname: "+value;
+		return "classname: "+value+"\n";
 	}
 
 }

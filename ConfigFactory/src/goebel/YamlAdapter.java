@@ -15,7 +15,7 @@ public class YamlAdapter extends Element{
 
 	@Override
 	public String getString() {
-		return "adapter: "+this.value;
+		return "adapter: "+this.value+"\n";
 		
 	}
 }

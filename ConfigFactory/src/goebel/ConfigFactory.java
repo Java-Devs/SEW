@@ -5,7 +5,7 @@ package goebel;
  * @version 2014-12-22
  */
 public abstract class ConfigFactory {
-	
+
 	/**
 	 * Erstellen eines Eintrages fuer die Config
 	 * @param value Wert fuer den Eintrag
@@ -17,7 +17,17 @@ public abstract class ConfigFactory {
 	 * Schreiben des Config in einem file
 	 * @param filename das File in dem geschrieben werden soll
 	 */
-	public void writeConfig(String filename){
-		
+	public void writeConfig(String hostname, String user, String password,String database, String command, String delimeter,String filename){
+		Connection con = new Connection();
+		String out = con.sendSelectCommand(hostname, user, password, database, command, delimeter);
+		String[] elements = out.split("\n");// splitten nach einen Zeilenumbruch
+		String[] element;
+		String config="";
+		for(int i = 0; i < elements.length; i++){
+			element = elements[i].split(delimeter);
+			config += (createElement(element[2],element[1])).getString();
+		}
+		System.out.println(config);
+
 	}
 }

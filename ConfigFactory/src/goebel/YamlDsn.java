@@ -15,6 +15,6 @@ public class YamlDsn extends Element{
 
 	@Override
 	public String getString() {
-		return "dsn: "+this.value;
+		return "dsn: "+this.value+"\n";
 	}
 }

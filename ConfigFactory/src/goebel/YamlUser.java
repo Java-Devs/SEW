@@ -14,7 +14,7 @@ public class YamlUser extends Element{
 	}
 	@Override
 	public String getString() {
-		return "user: "+this.value;
+		return "user: "+this.value+"\n";
 	}
 
 }

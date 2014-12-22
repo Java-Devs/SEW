@@ -8,8 +8,22 @@ public class YamlConfigFactory extends ConfigFactory{
 
 	@Override
 	public Element createElement(String value, String type) {
-		// TODO Auto-generated method stub
-		return null;
+		Element e = null;
+		switch(type){
+		case "adapter":
+			e = new YamlAdapter(value);
+		break;
+		case "classname":
+			e = new YamlClassname(value);
+		break;
+		case "dsn":
+			e = new YamlDsn(value);
+		break;
+		case "user":
+			e = new YamlUser(value);
+		break;
+		}
+		return e;
 	}
 	
 }

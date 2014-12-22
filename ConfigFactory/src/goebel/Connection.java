@@ -27,17 +27,13 @@ public class Connection {
 		ds.setPassword(password);
 		ds.setDatabaseName(database);
 		try {
-			System.out.println("Connect to server...");
 			java.sql.Connection con = ds.getConnection();
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(command);
-			System.out.println("halsf");
 			ResultSetMetaData restit = rs.getMetaData(); // fuer die Zeilenanzahl
 			this.anz = restit.getColumnCount(); // wv Zeilen es beinhaltet
 
 			String result = "";
-
-			System.out.println("Result of '"+command+"': \n");
 			while(rs.next()){
 				for(int i = 1; i <= anz;i++){
 					result += rs.getString(i)+delimeter; // rs.getString beginnt immer bei 1
