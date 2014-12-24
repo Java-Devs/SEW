@@ -30,30 +30,34 @@ public abstract class ConfigFactory {
 		BufferedWriter bf;
 		Connection con = new Connection();
 		String out = con.sendSelectCommand(hostname, user, password, database, command, delimeter);
-		String[] elements = out.split("\n");// splitten nach einen Zeilenumbruch
-		String[] element;
-		Element e;
-		try {
-			file = new File(filename);
-			rf = new FileWriter(file);
-			bf = new BufferedWriter(rf); 
-			for(int i = 0; i < elements.length; i++){
-				element = elements[i].split(delimeter);
-				e=createElement(element[2],element[1]);
-				if( e != null){
-					bf.write(e.getString());
-					bf.newLine();
+		if(out != null){
+			String[] elements = out.split("\n");// splitten nach einen Zeilenumbruch
+			String[] element;
+			Element e;
+			try {
+				file = new File(filename);
+				rf = new FileWriter(file);
+				bf = new BufferedWriter(rf); 
+				for(int i = 0; i < elements.length; i++){
+					element = elements[i].split(delimeter);
+					e=createElement(element[2],element[1]);
+					if( e != null){
+						bf.write(e.getString());//Ins File schreiben
+						bf.newLine();//Zeilenumbruch
+					}
 				}
+				System.out.println("Output in "+filename+" gespeichert.");
+				bf.close();rf.close();//Schließen damit man es nochmal verwenden kann.
+
+			} catch (FileNotFoundException ex) {
+				System.err.println("File "+filename+" kann nicht erstellt werden");
+			} catch (IOException ex) {
+				System.err.println("Fehler beim eintragen der Daten in "+filename);
 			}
-			bf.close();rf.close();
-
-		} catch (FileNotFoundException ex) {
-			System.err.println("File "+filename+" kann nicht erstellt werden");
-		} catch (IOException ex) {
-			System.err.println("Fehler beim eintragen der Daten in "+filename);
+		}else{
+			System.err.println("Fehler bei der Verbindung.");
+			System.exit(1);
 		}
-
-
 
 	}
 }
