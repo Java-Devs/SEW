@@ -58,7 +58,7 @@ public abstract class Fabrik {
 		String ausg = "Der Einkaufswagen beinhaltet "+einkaufsWagen.size()+" Produkte \n";
 		Iterator<Produkt> it = einkaufsWagen.iterator();
 		Produkt p;
-		int gesPreis = 0;
+		double gesPreis = 0;
 		while(it.hasNext()){
 			p = it.next();
 			ausg += it.next().kategorie+": ";
