@@ -23,6 +23,12 @@ public abstract class Fabrik {
 		einkaufsWagen = new ArrayList<Produkt>();
 	}
 	/**
+	 * Erzeugen eines Produktes in der jeweiligen Fabrik
+	 * @param produkt das Produkt das erzeugt werden soll
+	 * @return das erzeugte Produkt
+	 */
+	public abstract  Produkt erzeuge(String produkt);
+	/**
 	 * Hinzufuegen eines Produktes in den Einkaufswagen
 	 * @param p das Produkt das hinzugefuegt werden soll
 	 */
