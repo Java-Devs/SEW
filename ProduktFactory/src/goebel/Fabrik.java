@@ -55,24 +55,23 @@ public abstract class Fabrik {
 		verpackt = true;
 	}
 	public String toString(){
-		String ausg = "Der Einkaufswagen beinhaltet "+einkaufsWagen.size()+" Produkte \n";
+		String ausg = "Der Einkaufswagen beinhaltet "+einkaufsWagen.size()+" Produkte: \n";
 		Iterator<Produkt> it = einkaufsWagen.iterator();
 		Produkt p;
-		double gesPreis = 0;
-		while(it.hasNext()){
-			p = it.next();
-			ausg += it.next().kategorie+": ";
+		double gesPreis = 0;//Gesamtpreis
+		while(it.hasNext() == true){
+			p = it.next();// Zwischenspeichern damit man es oefters benutzen kann
+			ausg += p.kategorie+": ";
+			ausg += p.getBezeichnung()+" ";
 			if(p.getStueckanz() != 0){
 				ausg += p.getStueckanz()+"Stk ";
 			}
-			ausg += p.getBezeichnung()+" ";
 			if(p.getGewicht() != 0.0 && p.getMengenEinheit() != null){
 				ausg += p.getGewicht()+p.getMengenEinheit()+" ";
 			}
 			gesPreis += p.getPreis();
-			ausg += p.getPreis()+"\n";
+			ausg += p.getPreis()+" EUR \n";
 		}
-		ausg += "Gesamtpreis: "+gesPreis+"\n";
 		ausg += "Bezahlt: ";
 		if(bezahlt)
 			ausg += "Ja";
@@ -88,6 +87,9 @@ public abstract class Fabrik {
 			ausg += "Ja";
 		else
 			ausg += "Nein";
+		ausg += "\n------------------------";//Trennzeichen zwischen Liste und Gesamtpreis
+		ausg += "\nGesamtpreis: "+gesPreis+" EUR \n";
+		
 		return ausg;
 	}
 }

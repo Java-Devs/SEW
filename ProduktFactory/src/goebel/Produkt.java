@@ -13,7 +13,7 @@ public class Produkt {
 	private int stueckanz;
 	
 	/**
-	 * Setzen aller Werten
+	 * Konstruktor mit Gewicht und mengenEinheit
 	 * @param kategorie die Kategorie
 	 * @param bezeichnung die Bezeichnung
 	 * @param preis der Preis
@@ -27,6 +27,13 @@ public class Produkt {
 		this.gewicht = gewicht;
 		this.mengenEinheit = mengenEinheit;
 	}
+	/**
+	 * Konstruktor mit Stueckanzahl
+	 * @param kategorie die Kategorie
+	 * @param bezeichnung die Bezeichnung
+	 * @param preis der Preis
+	 * @param stueckanz die Stueckanzahl
+	 */
 	public Produkt(String kategorie, String bezeichnung, double preis, int stueckanz){
 		this.kategorie = kategorie;
 		this.bezeichnung = bezeichnung;
