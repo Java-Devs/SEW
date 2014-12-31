@@ -1,6 +1,7 @@
 package goebel;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 /**
  * Abstrakte Fabrik, die Stati aendert, den Einkaufswagen verwaltet und 
  * eine toString Methode beinhaltet
@@ -54,7 +55,39 @@ public abstract class Fabrik {
 		verpackt = true;
 	}
 	public String toString(){
-		//TODO: Implementieren
-		return null;
+		String ausg = "Der Einkaufswagen beinhaltet "+einkaufsWagen.size()+" Produkte \n";
+		Iterator<Produkt> it = einkaufsWagen.iterator();
+		Produkt p;
+		int gesPreis = 0;
+		while(it.hasNext()){
+			p = it.next();
+			ausg += it.next().kategorie+": ";
+			if(p.getStueckanz() != 0){
+				ausg += p.getStueckanz()+"Stk ";
+			}
+			ausg += p.getBezeichnung()+" ";
+			if(p.getGewicht() != 0.0 && p.getMengenEinheit() != null){
+				ausg += p.getGewicht()+p.getMengenEinheit()+" ";
+			}
+			gesPreis += p.getPreis();
+			ausg += p.getPreis()+"\n";
+		}
+		ausg += "Gesamtpreis: "+gesPreis+"\n";
+		ausg += "Bezahlt: ";
+		if(bezahlt)
+			ausg += "Ja";
+		else
+			ausg += "Nein";
+		ausg += "\nVerschickt: ";
+		if(verschickt)
+			ausg += "Ja";
+		else
+			ausg += "Nein";
+		ausg += "\nVerpackt: ";
+		if(verpackt)
+			ausg += "Ja";
+		else
+			ausg += "Nein";
+		return ausg;
 	}
 }

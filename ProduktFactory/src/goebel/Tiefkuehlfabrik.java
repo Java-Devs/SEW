@@ -4,7 +4,7 @@ package goebel;
  * @author Melanie Goebel
  * @version 2014-12-31
  */
-public class Tiefkuehlfabrik extends Fabrik{
+public class TiefkuehlFabrik extends Fabrik{
 
 	@Override
 	public Produkt erzeuge(String produkt) {

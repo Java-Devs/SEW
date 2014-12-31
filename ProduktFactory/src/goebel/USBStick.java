@@ -6,6 +6,6 @@ package goebel;
  */
 public class USBStick extends Produkt{
 	public USBStick(){
-		super("Elektronik","USB Stick 16GB",17.45);
+		super("Elektronik","USB Stick 16GB",17.45,2);
 	}
 }

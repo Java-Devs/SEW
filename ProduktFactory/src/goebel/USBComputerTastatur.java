@@ -6,6 +6,6 @@ package goebel;
  */
 public class USBComputerTastatur extends Produkt{
 	public USBComputerTastatur(){
-		super("Elektronik","USB Computertastatur 102 Tasten",24.85);
+		super("Elektronik","USB Computertastatur 102 Tasten",24.85,1);
 	}
 }

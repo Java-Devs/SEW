@@ -10,6 +10,7 @@ public class Produkt {
 	private double preis;
 	private double gewicht;
 	private String mengenEinheit;
+	private int stueckanz;
 	
 	/**
 	 * Setzen aller Werten
@@ -26,10 +27,11 @@ public class Produkt {
 		this.gewicht = gewicht;
 		this.mengenEinheit = mengenEinheit;
 	}
-	public Produkt(String kategorie, String bezeichnung, double preis){
+	public Produkt(String kategorie, String bezeichnung, double preis, int stueckanz){
 		this.kategorie = kategorie;
 		this.bezeichnung = bezeichnung;
 		this.preis = preis;
+		this.setStueckanz(stueckanz);
 	}
 	/**
 	 * @return die kategorie
@@ -90,5 +92,17 @@ public class Produkt {
 	 */
 	public void setMengenEinheit(String mengenEinheit) {
 		this.mengenEinheit = mengenEinheit;
+	}
+	/**
+	 * @return die stueckanzahl
+	 */
+	public int getStueckanz() {
+		return stueckanz;
+	}
+	/**
+	 * @param stueckanz die stueckanzahl auf die geandert werden soll
+	 */
+	public void setStueckanz(int stueckanz) {
+		this.stueckanz = stueckanz;
 	}
 }

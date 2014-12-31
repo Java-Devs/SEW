@@ -6,6 +6,6 @@ package goebel;
  */
 public class USBComputerMaus extends Produkt{
 	public USBComputerMaus(){
-		super("Elektronik","USB Computermaus laserabgetastet",14.99);
+		super("Elektronik","USB Computermaus laserabgetastet",14.99,1);
 	}
 }
