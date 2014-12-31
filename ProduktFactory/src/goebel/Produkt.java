@@ -26,6 +26,11 @@ public class Produkt {
 		this.gewicht = gewicht;
 		this.mengenEinheit = mengenEinheit;
 	}
+	public Produkt(String kategorie, String bezeichnung, double preis){
+		this.kategorie = kategorie;
+		this.bezeichnung = bezeichnung;
+		this.preis = preis;
+	}
 	/**
 	 * @return die kategorie
 	 */
